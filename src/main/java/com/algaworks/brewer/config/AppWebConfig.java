@@ -8,6 +8,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.thymeleaf.spring5.ISpringTemplateEngine;
 import org.thymeleaf.spring5.SpringTemplateEngine;
@@ -56,6 +57,14 @@ public class AppWebConfig implements WebMvcConfigurer, ApplicationContextAware {
 		resolver.setSuffix(".html");
 		resolver.setTemplateMode(TemplateMode.HTML);
 		return resolver;
+	}
+	
+	/**
+	 * Configura aonde o Spring MVC vai buscar os recursos
+	 */
+	@Override
+	public void addResourceHandlers(ResourceHandlerRegistry registry) {
+		registry.addResourceHandler("/**").addResourceLocations("classpath:/static/");
 	}
 
 }

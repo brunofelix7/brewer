@@ -14,9 +14,11 @@ import com.algaworks.brewer.model.Cerveja;
 @RequestMapping(path = "/cervejas")
 public class CervejaController {
 	
+	private static final String VIEW_CADASTRO = "cerveja/cadastro-produto";
+	
 	@RequestMapping(method = RequestMethod.GET, value = "/novo")
 	public String novo(Cerveja cerveja) {
-		return "cerveja/cadastro";
+		return VIEW_CADASTRO;
 	}
 	
 	@RequestMapping(method = RequestMethod.POST, value = "/novo")
