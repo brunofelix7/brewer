@@ -18,6 +18,9 @@ import org.thymeleaf.templateresolver.ITemplateResolver;
 
 import com.algaworks.brewer.controller.CervejaController;
 
+/**
+ * Classe de configuração do Spring MVC
+ */
 @Configuration
 @EnableWebMvc
 @ComponentScan(basePackageClasses = { CervejaController.class })

@@ -1,5 +1,8 @@
 package com.algaworks.brewer.config;
 
+import javax.servlet.Filter;
+
+import org.springframework.web.filter.CharacterEncodingFilter;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
 /**
@@ -26,6 +29,14 @@ public class AppServletInitializer extends AbstractAnnotationConfigDispatcherSer
 	@Override
 	protected String[] getServletMappings() {
 		return new String[] { "/" };
+	}
+	
+	@Override
+	protected Filter[] getServletFilters() {
+		CharacterEncodingFilter encoding = new CharacterEncodingFilter();
+		encoding.setEncoding("UTF-8");
+		encoding.setForceEncoding(true);
+		return new Filter[] { encoding };
 	}
 
 }
