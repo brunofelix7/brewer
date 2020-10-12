@@ -13,22 +13,23 @@ import com.algaworks.brewer.model.Cerveja;
 @Controller
 @RequestMapping(path = "/cervejas")
 public class CervejaController {
-	
-	private static final String VIEW_CADASTRO = "cerveja/cadastro-produto";
-	
+
+	private static final String VIEW_CADASTRO = "cerveja/cadastro";
+]
 	@RequestMapping(method = RequestMethod.GET, value = "/novo")
 	public String novo(Cerveja cerveja) {
 		return VIEW_CADASTRO;
 	}
-	
+
 	@RequestMapping(method = RequestMethod.POST, value = "/novo")
 	public String cadastrar(@Valid Cerveja cerveja, BindingResult result, RedirectAttributes attributes) {
-		if(result.hasErrors()) {
+		if (result.hasErrors()) {
 			return novo(cerveja);
 		}
-		//	Salvar no banco de dados...
+		//	TODO: Salvar no banco de dados
+		
 		attributes.addFlashAttribute("mensagem", "Salvo com sucesso");
 		return "redirect:/cervejas/novo";
 	}
-
+	
 }

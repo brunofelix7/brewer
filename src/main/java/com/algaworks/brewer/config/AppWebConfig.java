@@ -9,11 +9,11 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
-import org.thymeleaf.spring5.ISpringTemplateEngine;
-import org.thymeleaf.spring5.SpringTemplateEngine;
-import org.thymeleaf.spring5.templateresolver.SpringResourceTemplateResolver;
-import org.thymeleaf.spring5.view.ThymeleafViewResolver;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+import org.thymeleaf.spring4.ISpringTemplateEngine;
+import org.thymeleaf.spring4.SpringTemplateEngine;
+import org.thymeleaf.spring4.templateresolver.SpringResourceTemplateResolver;
+import org.thymeleaf.spring4.view.ThymeleafViewResolver;
 import org.thymeleaf.templatemode.TemplateMode;
 import org.thymeleaf.templateresolver.ITemplateResolver;
 
@@ -25,15 +25,29 @@ import com.algaworks.brewer.controller.CervejaController;
 @Configuration
 @EnableWebMvc
 @ComponentScan(basePackageClasses = { CervejaController.class })
-public class AppWebConfig implements WebMvcConfigurer, ApplicationContextAware {
+public class AppWebConfig extends WebMvcConfigurerAdapter implements ApplicationContextAware {
 
 	private ApplicationContext applicationContext;
-
+	
+	/**
+	 * Recupera o contexto da aplicação quando ela subir para o servidor
+	 */
 	@Override
 	public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
 		this.applicationContext = applicationContext;
 	}
-
+	
+	/**
+	 * Configura o local onde o Spring vai buscar os recursos estáticos de layout
+	 */
+	@Override
+	public void addResourceHandlers(ResourceHandlerRegistry registry) {
+		registry.addResourceHandler("/**").addResourceLocations("classpath:/static/");
+	}
+	
+	/**
+	 * Configuração que resolve as views da aplicação
+	 */
 	@Bean
 	public ViewResolver viewResolver() {
 		ThymeleafViewResolver resolver = new ThymeleafViewResolver();
@@ -42,6 +56,9 @@ public class AppWebConfig implements WebMvcConfigurer, ApplicationContextAware {
 		return resolver;
 	}
 
+	/**
+	 * Configuração do Spring para processar os arquivos HTML
+	 */
 	@Bean
 	public ISpringTemplateEngine templateEngine() {
 		SpringTemplateEngine engine = new SpringTemplateEngine();
@@ -49,7 +66,10 @@ public class AppWebConfig implements WebMvcConfigurer, ApplicationContextAware {
 		engine.setTemplateResolver(templateResolver());
 		return engine;
 	}
-
+	
+	/**
+	 * Configura o local onde o Spring vai achar os templates HTML
+	 */
 	private ITemplateResolver templateResolver() {
 		SpringResourceTemplateResolver resolver = new SpringResourceTemplateResolver();
 		resolver.setApplicationContext(applicationContext);
@@ -57,14 +77,6 @@ public class AppWebConfig implements WebMvcConfigurer, ApplicationContextAware {
 		resolver.setSuffix(".html");
 		resolver.setTemplateMode(TemplateMode.HTML);
 		return resolver;
-	}
-	
-	/**
-	 * Configura aonde o Spring MVC vai buscar os recursos
-	 */
-	@Override
-	public void addResourceHandlers(ResourceHandlerRegistry registry) {
-		registry.addResourceHandler("/**").addResourceLocations("classpath:/static/");
 	}
 
 }

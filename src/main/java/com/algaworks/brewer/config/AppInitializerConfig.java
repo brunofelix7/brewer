@@ -8,7 +8,7 @@ import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatche
 /**
  * Classe de inicialização do Spring MVC
  */
-public class AppServletInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
+public class AppInitializerConfig extends AbstractAnnotationConfigDispatcherServletInitializer {
 
 	@Override
 	protected Class<?>[] getRootConfigClasses() {
@@ -16,7 +16,7 @@ public class AppServletInitializer extends AbstractAnnotationConfigDispatcherSer
 	}
 
 	/**
-	 * Configura onde o Spring MVC vai achar os controllers
+	 * Configura onde o Spring MVC vai achar os controllers da aplicação
 	 */
 	@Override
 	protected Class<?>[] getServletConfigClasses() {
@@ -24,13 +24,16 @@ public class AppServletInitializer extends AbstractAnnotationConfigDispatcherSer
 	}
 
 	/**
-	 * Intercepta qualquer URL dentro do projeto
+	 * Intercepta qualquer URL da aplicação
 	 */
 	@Override
 	protected String[] getServletMappings() {
 		return new String[] { "/" };
 	}
 	
+	/**
+	 * Força o encoding dos caracteres em UTF-8
+	 */
 	@Override
 	protected Filter[] getServletFilters() {
 		CharacterEncodingFilter encoding = new CharacterEncodingFilter();
