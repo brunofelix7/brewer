@@ -28,23 +28,23 @@
 		<!-- Thymeleaf -->
 		<thymeleaf.version>3.0.11.RELEASE</thymeleaf.version>
 		
-		<!-- Hibernate Validator -->
-		<hibernate-validator.version>5.2.4.Final</hibernate-validator.version>
-		
 		<!-- Thymeleaf - Layout Dialect -->
 		<thymeleaf-layout-dialect.version>2.0.0</thymeleaf-layout-dialect.version>
 		
-		<!-- Log4j -->
-		<log4j.version>2.6</log4j.version>
-		
-		<!-- Slf4j -->
-		<jcl-over-slf4j.version>1.7.21</jcl-over-slf4j.version>
+		<!-- Hibernate Validator -->
+		<hibernate-validator.version>5.2.4.Final</hibernate-validator.version>
 		
 		<!-- Hibernate -->
 		<hibernate.version>5.1.0.Final</hibernate.version>
 		
 		<!-- Spring Data JPA -->
 		<spring-data-jpa.version>1.10.2.RELEASE</spring-data-jpa.version>
+		
+		<!-- Log4j -->
+		<log4j.version>2.6</log4j.version>
+		
+		<!-- Slf4j -->
+		<jcl-over-slf4j.version>1.7.21</jcl-over-slf4j.version>
 	</properties>
 
 	<build>
