@@ -19,6 +19,8 @@ import org.thymeleaf.templateresolver.ITemplateResolver;
 
 import com.algaworks.brewer.controller.CervejaController;
 
+import nz.net.ultraq.thymeleaf.LayoutDialect;
+
 /**
  * Classe de configuração do Spring MVC
  */
@@ -64,6 +66,7 @@ public class AppWebConfig extends WebMvcConfigurerAdapter implements Application
 		SpringTemplateEngine engine = new SpringTemplateEngine();
 		engine.setEnableSpringELCompiler(true);
 		engine.setTemplateResolver(templateResolver());
+		engine.addDialect(new LayoutDialect());
 		return engine;
 	}
 	
