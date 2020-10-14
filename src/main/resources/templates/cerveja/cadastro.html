@@ -5,6 +5,9 @@
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	layout:decorator="'layout/layout-padrao'">
 
+<head>
+	<title>Cadastro de cerveja</title>
+</head>
 <body>
 	<!-- CONTEÚDO PRINCIPAL -->
 	<section layout:fragment="conteudo">
@@ -59,9 +62,17 @@
 					<div class="col-sm-3">
 						<div class="form-group">
 							<label for="estilo">Estilo</label>
-							<select id="estilo" class="form-control">
-								<option value="">Selecione o estilo</option>
-							</select>
+							<div class="bw-field-action">
+								<select id="estilo" class="form-control">
+									<option value="">Selecione o estilo</option>
+								</select>
+								
+								<div class="bw-field-action__icon">
+									<a href="#" data-toggle="modal" data-target="#modalCadastroEstilo">
+										<i class="glyphicon glyphicon-plus-sign bw-glyphicon-large"></i>
+									</a>
+								</div>
+							</div>
 						</div>
 					</div>
 					
@@ -144,6 +155,10 @@
 		
 			</form>
 		</div>
+		
+		<!-- INCLUI O DIALOGO DE CADASTRO RAPIDO DE ESTILO -->
+		<div th:replace="estilo/cadastro-rapido :: modal"></div>
 	</section>
+	
 </body>
 </html>
