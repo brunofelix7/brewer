@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-BR" 
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="'layout/layout-padrao'">
+
+<head>
+	<title>Cadastro de cliente</title>
+</head>
+<body>
+
+	<!-- CONTEÚDO PRINCIPAL -->
+	<section layout:fragment="conteudo">
+		<div class="page-header">
+			<div class="container-fluid">
+				<h1>
+					Cadastro de cliente
+				</h1>
+			</div>
+		</div>
+		
+		<div class="container-fluid">
+			
+			<!-- FORMULÁRIO -->
+			<form method="POST" class="form-vertical js-form-loading">
+				
+				<!-- NOME -->
+				<div class="form-group">
+					<label for="nome">Nome</label>
+					<input id="nome" type="text" class="form-control" />
+				</div>
+				
+				<!-- E-MAIL / DATA DE NASCIMENTO -->
+				<div class="row">
+					
+					<!-- E-MAIL -->
+					<div class="col-sm-6 form-group">
+						<label for="email">E-mail</label>
+						<input id="email" type="text" class="form-control" />
+					</div>
+					
+					<!-- DATA DE NASCIMENTO -->
+					<div class="col-sm-3 form-group">
+						<label for="dtNascimento">Data de nascimento</label>
+						<input id="dtNascimento" type="text" class="form-control" />
+					</div>
+				</div>
+				
+				<!-- SENHA / CONFIRMAÇÃO DE SENHA / STATUS -->
+				<div class="row">
+				
+					<!-- SENHA -->
+					<div class="col-sm-3 form-group">
+						<label for="senha">Senha</label>
+						<input id="senha" type="text" class="form-control" />
+					</div>
+					
+					<!-- CONFIRMAÇÃO DE SENHA -->
+					<div class="col-sm-3 form-group">
+						<label for="confirmarSenha">Confirmação de senha</label>
+						<input id="confirmarSenha" type="text" class="form-control" />
+					</div>
+					
+					<!-- STATUS -->
+					<div class="col-sm-3">
+						<label for="status">Status</label>
+						<div class="checkbox">
+							<label><input type="checkbox" />Ativo</label>
+						</div>
+					</div>
+				</div>
+				
+				<!-- GRUPOS -->
+				<div class="form-group">
+					<label for="status">Grupos</label>
+					<div class="checkbox">
+						<label class="checkbox-inline"><input type="checkbox" />Administrador</label>
+						<label class="checkbox-inline"><input type="checkbox" />Vendedor</label>
+					</div>
+				</div>
+				
+				<!-- SUBMETER FORMULÁRIO -->
+				<div class="form-group">
+					<button class="btn btn-primary" type="submit">Salvar</button>
+				</div>
+			</form>
+		</div>
+		
+	</section>
+	
+</body>
+</html>
