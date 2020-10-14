@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="pt-BR" 
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="'layout/layout-padrao'">
+
+<head>
+	<title>Cadastro de cliente</title>
+</head>
+<body>
+
+	<!-- CONTEÚDO PRINCIPAL -->
+	<section layout:fragment="conteudo">
+		<div class="page-header">
+			<div class="container-fluid">
+				<h1>
+					Cadastro de cliente
+				</h1>
+			</div>
+		</div>
+		
+		<div class="container-fluid">
+		
+			<!-- FORMULÁRIO -->
+			<form method="POST" class="form-vertical js-form-loading">
+			
+				<!-- NOME -->
+				<div class="form-group">
+					<label for="nome">Nome</label>
+					<input id="nome" type="text" class="form-control" />
+				</div>
+				
+				<!-- TIPO PESSOA / CPF/CNPJ -->
+				<div class="row">
+					
+					<!-- TIPO PESSOA -->
+					<div class="col-sm-4 form-group">
+						<label for="tipoPessoa">Tipo pessoa</label>
+						<div>
+							<div class="radio radio-inline">
+								<input type="radio" name="tipoPessoa" class="form-check-input" />
+								<label>Física</label>
+							</div>
+							<div class="radio radio-inline">
+								<input type="radio" name="tipoPessoa" class="form-check-input" />
+								<label>Jurídica</label>
+							</div>
+						</div>
+					</div>
+					
+					<!-- CPF/CNPJ -->
+					<div class="col-sm-8 form-group">
+						<label for="cpfCnpj">CPF/CNPJ</label>
+						<input id="cpfCnpj" type="text" class="form-control" />
+					</div>
+				</div>
+				
+				<!-- TELEFONE / E-MAIL -->
+				<div class="row">
+					
+					<!-- TELEFONE -->
+					<div class="col-sm-4 form-group">
+						<label for="telefone">Telefone</label>
+						<input id="telefone" type="text" class="form-control" />
+					</div>
+					
+					<!-- E-MAIL -->
+					<div class="col-sm-8 form-group">
+						<label for="email">E-mail</label>
+						<input id="email" type="text" class="form-control" />
+					</div>
+				</div>
+				
+				<!-- LOGRADOURO / NÚMERO / COMPLEMENTO -->
+				<div class="row">
+						
+					<!-- LOGRADOURO -->
+					<div class="col-sm-4 form-group">
+						<label for="logradouro">Logradouro</label>
+						<input id="logradouro" type="text" class="form-control" />
+					</div>
+					
+					<!-- NÚMERO -->
+					<div class="col-sm-4 form-group">
+						<label for="numero">Número</label>
+						<input id="numero" type="text" class="form-control" />
+					</div>
+					
+					<!-- COMPLEMENTO -->
+					<div class="col-sm-4 form-group">
+						<label for="complemento">Complemento</label>
+						<input id="complemento" type="text" class="form-control" />
+					</div>
+				</div>
+				
+				<!-- CEP / ESTADO / CIDADE -->
+				<div class="row">
+						
+					<!-- CEP -->
+					<div class="col-sm-4 form-group">
+						<label for="cep">CEP</label>
+						<input id="cep" type="text" class="form-control" />
+					</div>
+					
+					<!-- ESTADO -->
+					<div class="col-sm-4 form-group">
+						<label for="estado">Estado</label>
+						<select id="estado" class="form-control">
+							<option value="">Selecione o estado</option>
+						</select>
+					</div>
+					
+					<!-- CIDADE -->
+					<div class="col-sm-4 form-group">
+						<label for="cidade">Cidade</label>
+						<select id="cidade" class="form-control">
+							<option value="">Selecione a cidade</option>
+						</select>
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<button class="btn btn-primary" type="submit">Salvar</button>
+				</div>
+			</form>
+		</div>
+	</section>
+
+</body>
+</html>
